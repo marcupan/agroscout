@@ -58,13 +58,13 @@ const dateFormatter = new Intl.DateTimeFormat('uk-UA', { dateStyle: 'medium', ti
 export const PointCard = ({ point, fieldName }: PointCardProps): ReactElement => {
   const removePoint = usePointsStore((state) => state.removePoint);
 
-  const handleRemove = (): void => {
-    removePoint(point.id);
-  };
-
   const mgrs = toMgrs(point);
   const description = point.description.trim();
   const pointLabel = description || POINT_TYPE_LABEL[point.type];
+
+  const handleRemove = (): void => {
+    removePoint(point.id);
+  };
 
   return (
     <li className="flex flex-col gap-2 rounded-md border border-shell-600 bg-shell-800 p-3">

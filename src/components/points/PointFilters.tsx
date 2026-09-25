@@ -63,9 +63,9 @@ export const PointFilters = (): ReactElement => {
         </div>
         <SegmentedControl<SortOrder>
           value={sort}
-          onChange={handleSortChange}
           options={SORT_OPTIONS}
           ariaLabel="Сортування за датою"
+          onChange={handleSortChange}
         />
       </div>
     </div>

@@ -11,6 +11,7 @@ export const PointsPanel = (): ReactElement => {
   const selectedField = useFieldsStore(
     (state) => state.fields.find((field) => field.properties.id === state.selectedFieldId) ?? null,
   );
+
   const title = selectedField ? `Точки · ${selectedField.properties.name}` : 'Усі точки';
 
   return (

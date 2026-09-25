@@ -19,9 +19,9 @@ export const ShowAllFieldsButton = (): ReactElement | null => {
     <Button
       variant="ghost"
       size="sm"
-      onClick={handleShowAll}
       title="Показати всі поля (Esc)"
       aria-keyshortcuts="Escape"
+      onClick={handleShowAll}
     >
       Показати всі
     </Button>

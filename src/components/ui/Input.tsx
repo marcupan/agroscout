@@ -24,7 +24,7 @@ export const Input = ({
       </label>
       <input
         id={inputId}
-        className={`h-10 rounded-md border border-shell-600 bg-shell-800 px-3 text-sm text-ink-100 placeholder:text-ink-300 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+        className={`h-10 rounded-md border border-shell-600 bg-shell-800 px-3 text-sm text-ink-100 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
         {...props}
       />
     </div>

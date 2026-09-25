@@ -64,6 +64,7 @@ const PointMarker = ({ point, onRemove }: PointMarkerProps): ReactElement => {
   const label = POINT_TYPE_LABEL[point.type];
   const mgrs = toMgrs(point);
   const position: LatLngTuple = [point.lat, point.lng];
+
   const remove = useCallback(() => {
     onRemove(point.id);
   }, [onRemove, point.id]);
@@ -78,8 +79,11 @@ const PointMarker = ({ point, onRemove }: PointMarkerProps): ReactElement => {
       title={label}
     >
       <Popup autoPanPaddingTopLeft={POPUP_PAN_PADDING_TOP_LEFT}>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- not an interaction, only stops propagation (see keepClickInPopup) */}
-        <div className="min-w-[220px] space-y-1.5 text-sm text-ink-100" onClick={keepClickInPopup}>
+        <div
+          role="presentation"
+          className="min-w-55 space-y-1.5 text-sm text-ink-100"
+          onClick={keepClickInPopup}
+        >
           <p className="text-base font-semibold">{label}</p>
           <p className="font-mono text-xs text-ink-300">{formatLatLng(point)}</p>
           <p className="font-mono text-xs text-ink-300">{mgrs ? formatMgrs(mgrs) : '—'}</p>

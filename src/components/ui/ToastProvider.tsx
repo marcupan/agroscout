@@ -16,6 +16,7 @@ export interface ToastProviderProps {
 
 export const ToastProvider = ({ children }: ToastProviderProps): ReactElement => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+
   const timersRef = useRef(new Map<string, ReturnType<typeof setTimeout>>());
   const lastRef = useRef<{ message: string; tone: ToastTone; id: string } | null>(null);
 

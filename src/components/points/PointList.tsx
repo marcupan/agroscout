@@ -83,14 +83,14 @@ export const PointList = ({ fieldId = null }: PointListProps): ReactElement => {
   const filterType = usePointsStore((state) => state.filters.type);
   const filterSearch = usePointsStore((state) => state.filters.search);
   const filterSort = usePointsStore((state) => state.filters.sort);
-  const isFilterActive = filterType !== 'all' || filterSearch !== '' || filterSort !== 'newest';
   const filtered = useFilteredPoints(fieldId);
   const fields = useFieldsStore((state) => state.fields);
+
+  const isFilterActive = filterType !== 'all' || filterSearch !== '' || filterSort !== 'newest';
   const fieldNameById = useMemo(
     () => new Map(fields.map((field) => [field.properties.id, field.properties.name])),
     [fields],
   );
-
   const total = useMemo(
     () =>
       fieldId != null ? allPoints.filter((point) => point.fieldId === fieldId).length : allPoints.length,

@@ -13,13 +13,6 @@ export const useTwoStepConfirm = (onConfirm: () => void, timeoutMs = DEFAULT_TIM
   const [confirming, setConfirming] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  useEffect(
-    () => () => {
-      clearTimeout(timer.current);
-    },
-    [],
-  );
-
   const request = useCallback(() => {
     clearTimeout(timer.current);
     setConfirming(true);
@@ -38,6 +31,13 @@ export const useTwoStepConfirm = (onConfirm: () => void, timeoutMs = DEFAULT_TIM
     setConfirming(false);
     onConfirm();
   }, [onConfirm]);
+
+  useEffect(
+    () => () => {
+      clearTimeout(timer.current);
+    },
+    [],
+  );
 
   return { confirming, request, cancel, confirm };
 };

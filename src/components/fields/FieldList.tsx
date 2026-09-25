@@ -18,9 +18,9 @@ export const FieldList = (): ReactElement => {
           key={field.properties.id}
           field={field}
           selected={field.properties.id === selectedFieldId}
-          onSelect={selectField}
           pointCount={pointCounts[field.properties.id] ?? 0}
           className="w-56 shrink-0 lg:w-full lg:shrink"
+          onSelect={selectField}
         />
       ))}
     </div>

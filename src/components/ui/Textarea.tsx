@@ -30,13 +30,13 @@ export const Textarea = ({
   onChange,
   ...props
 }: TextareaProps): ReactElement => {
+  const [length, setLength] = useState<number>(() => computeInitialLength(value, defaultValue));
+
   const generatedId = useId();
   const textareaId = id ?? generatedId;
   const hintId = `${textareaId}-hint`;
   const counterId = `${textareaId}-counter`;
   const describedBy = [hint ? hintId : null, maxLength ? counterId : null].filter(Boolean).join(' ');
-
-  const [length, setLength] = useState<number>(() => computeInitialLength(value, defaultValue));
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     setLength(event.target.value.length);
@@ -62,7 +62,7 @@ export const Textarea = ({
         defaultValue={defaultValue}
         value={value}
         onChange={handleChange}
-        className={`min-h-[6rem] resize-y rounded-md border border-shell-600 bg-shell-800 px-3 py-2 text-sm text-ink-100 placeholder:text-ink-300 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+        className={`min-h-24 resize-y rounded-md border border-shell-600 bg-shell-800 px-3 py-2 text-sm text-ink-100 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
         {...props}
       />
       {hint ? (

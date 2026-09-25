@@ -1,6 +1,6 @@
 import { useId, useLayoutEffect, useRef } from 'react';
 
-import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode, SyntheticEvent } from 'react';
+import type { ReactElement, ReactNode, SyntheticEvent } from 'react';
 
 export interface ModalProps {
   open: boolean;
@@ -14,8 +14,14 @@ export interface ModalSectionProps {
 }
 
 export const Modal = ({ open, onClose, title, children }: ModalProps): ReactElement => {
-  const titleId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const titleId = useId();
+
+  const handleCancel = (event: SyntheticEvent<HTMLDialogElement>): void => {
+    event.preventDefault();
+    onClose();
+  };
 
   useLayoutEffect(() => {
     const dialog = dialogRef.current;
@@ -35,35 +41,12 @@ export const Modal = ({ open, onClose, title, children }: ModalProps): ReactElem
     };
   }, [open]);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDialogElement>): void => {
-    if (event.key !== 'Escape') {
-      return;
-    }
-
-    event.preventDefault();
-    onClose();
-  };
-
-  const handleCancel = (event: SyntheticEvent<HTMLDialogElement>): void => {
-    event.preventDefault();
-    onClose();
-  };
-
-  const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>): void => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- dialog owns Escape/backdrop dismissal natively
     <dialog
       ref={dialogRef}
       aria-labelledby={titleId}
-      onKeyDown={handleKeyDown}
       onCancel={handleCancel}
-      onClick={handleBackdropClick}
-      className="m-auto w-[calc(100%-2rem)] max-w-lg rounded-lg border border-shell-600 bg-shell-800 p-0 text-ink-100 shadow-xl transition-[opacity,translate] duration-150 backdrop:bg-shell-900/70 starting:translate-y-2 starting:opacity-0"
+      className="m-auto w-[calc(100%-2rem)] max-w-lg rounded-lg border border-shell-600 bg-shell-800 p-0 text-ink-100 shadow-xl transition-[opacity,translate] duration-150 starting:translate-y-2 starting:opacity-0"
     >
       <div className="flex max-h-[90vh] w-full flex-col">
         <div className="flex items-center justify-between border-b border-shell-600 px-5 py-4">

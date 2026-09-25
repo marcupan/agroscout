@@ -73,6 +73,8 @@ const PointFormModalFields = ({
   const [type, setType] = useState<PointType | ''>(initialType ?? '');
   const [description, setDescription] = useState('');
 
+  const mgrs = toMgrs(coords);
+
   const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     const next = event.target.value;
 
@@ -104,8 +106,6 @@ const PointFormModalFields = ({
     onClose();
   };
 
-  const mgrs = toMgrs(coords);
-
   return (
     <Modal open onClose={onClose} title={`Нова точка · ${fieldName ?? ''}`}>
       <form onSubmit={handleSubmit} className="flex min-h-0 flex-1 flex-col">
@@ -123,17 +123,17 @@ const PointFormModalFields = ({
               options={POINT_TYPE_OPTIONS}
               value={type}
               placeholder="Оберіть тип"
-              onChange={handleTypeChange}
               required
+              onChange={handleTypeChange}
             />
 
             <Textarea
               label="Опис"
               value={description}
-              onChange={handleDescriptionChange}
               maxLength={MAX_DESCRIPTION_LENGTH}
               hint="Необов’язково"
               placeholder="Що зафіксовано на точці..."
+              onChange={handleDescriptionChange}
             />
           </div>
         </ModalBody>

@@ -8,7 +8,7 @@
   --color-shell-600: #37453d;
 
   --color-ink-100: #e8ede9;
-  --color-ink-300: #93a29a;
+  --color-ink-300: #a4b2ab;
 
   --color-signal-400: #e3b23c;
   --color-signal-600: #8a6b1f;
@@ -75,7 +75,7 @@
 }
 
 @utility eyebrow {
-  @apply font-mono text-[11px] tracking-[0.18em] text-ink-300 uppercase;
+  @apply font-mono text-xs tracking-[0.14em] text-ink-300 uppercase;
 }
 
 .leaflet-container {
@@ -127,4 +127,58 @@
 
 .leaflet-container:focus-visible {
   box-shadow: inset 0 0 0 2px var(--color-signal-400);
+}
+
+.point-pin {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 34px;
+}
+
+.point-pin::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 8px;
+  border: 6px solid transparent;
+  border-top: 10px solid var(--pin-color);
+  border-bottom: 0;
+}
+
+.point-pin__head {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f4f6f2;
+  border-radius: 50%;
+  background: var(--pin-color);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 45%);
+  color: #fff;
+}
+
+.point-pin__head svg {
+  width: 13px;
+  height: 13px;
+}
+
+.point-pin[data-type='soil_sample'] {
+  --pin-color: var(--color-type-soil);
+}
+
+.point-pin[data-type='pest'] {
+  --pin-color: var(--color-type-pest);
+}
+
+.point-pin[data-type='disease'] {
+  --pin-color: var(--color-type-disease);
+}
+
+.point-pin[data-type='other'] {
+  --pin-color: var(--color-type-other);
 }

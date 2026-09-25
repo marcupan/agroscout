@@ -26,6 +26,20 @@ npm run dev
 - **Панель**: список усіх точок з фільтром за типом, пошуком за описом і сортуванням за датою.
 - **UI**: desktop і tablet. `Esc` повертає карту до загального вигляду.
 
+## Скріншоти
+
+**Загальний вигляд**: усі поля й точки.
+
+![Загальний вигляд: 4 поля й 6 точок на карті та в списку](docs/screenshots/01-overview.webp)
+
+**Нова точка**: поле вибране, форма з координатами й MGRS.
+
+![Форма нової точки на вибраному полі](docs/screenshots/02-new-point-form.webp)
+
+**Планшет**: карта зверху, панель під нею.
+
+<img src="docs/screenshots/03-tablet.webp" alt="Планшетний макет: карта зверху, поля й точки під нею" width="384">
+
 ## Технології
 
 React 19, TypeScript, Vite, Leaflet + react-leaflet, Zustand, Tailwind CSS, `mgrs`, Vitest, ESLint, Prettier.

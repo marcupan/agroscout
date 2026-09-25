@@ -28,6 +28,9 @@ const TILE_ATTRIBUTION =
 export const FieldMap = ({ onAddPointRequest, onInvalidClick }: FieldMapProps): ReactElement => {
   const fields = useFieldsStore((state) => state.fields);
   const { showToast } = useToast();
+
+  const tileErrorShown = useRef(false);
+
   const initialBounds = useMemo(
     () => getFeatureCollectionBounds({ type: 'FeatureCollection', features: fields }),
     [fields],
@@ -38,7 +41,6 @@ export const FieldMap = ({ onAddPointRequest, onInvalidClick }: FieldMapProps): 
     return [(south + north) / 2, (west + east) / 2];
   }, [initialBounds]);
 
-  const tileErrorShown = useRef(false);
   const tileEventHandlers = useMemo<LeafletEventHandlerFnMap>(
     () => ({
       tileerror: () => {

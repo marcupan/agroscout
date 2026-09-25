@@ -44,12 +44,13 @@ const AppHeader = (): ReactElement => {
 
 const Workspace = (): ReactElement => {
   const { showToast } = useToast();
-  const [draft, setDraft] = useState<LatLng | null>(null);
 
   const selectedFieldId = useFieldsStore((state) => state.selectedFieldId);
   const selectedField = useFieldsStore(
     (state) => state.fields.find((field) => field.properties.id === state.selectedFieldId) ?? null,
   );
+
+  const [draft, setDraft] = useState<LatLng | null>(null);
 
   const handleAddPointRequest = useCallback((point: LatLng): void => {
     setDraft(point);

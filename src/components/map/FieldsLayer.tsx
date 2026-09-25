@@ -25,6 +25,7 @@ const toLatLngRings = (field: Field): [number, number][][] => {
 
 const FieldPolygon = ({ field, isSelected, onSelect }: FieldPolygonProps): ReactElement => {
   const [hovered, setHovered] = useState(false);
+
   const positions = useMemo(() => toLatLngRings(field), [field]);
 
   const base = isSelected ? SELECTED_STYLE : UNSELECTED_STYLE;
@@ -64,6 +65,17 @@ export const FieldsLayer = (): ReactElement => {
   const selectedFieldId = useFieldsStore((state) => state.selectedFieldId);
   const selectField = useFieldsStore((state) => state.selectField);
 
+  const ordered = useMemo(() => {
+    if (selectedFieldId == null) {
+      return fields;
+    }
+
+    const others = fields.filter((field) => field.properties.id !== selectedFieldId);
+    const selected = fields.find((field) => field.properties.id === selectedFieldId);
+
+    return selected ? [...others, selected] : fields;
+  }, [fields, selectedFieldId]);
+
   const handleSelect = useCallback(
     (field: Field, isSelected: boolean, event: LeafletMouseEvent) => {
       if (isSelected) {
@@ -75,17 +87,6 @@ export const FieldsLayer = (): ReactElement => {
     },
     [selectField],
   );
-
-  const ordered = useMemo(() => {
-    if (selectedFieldId == null) {
-      return fields;
-    }
-
-    const others = fields.filter((field) => field.properties.id !== selectedFieldId);
-    const selected = fields.find((field) => field.properties.id === selectedFieldId);
-
-    return selected ? [...others, selected] : fields;
-  }, [fields, selectedFieldId]);
 
   return (
     <>

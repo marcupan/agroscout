@@ -22,7 +22,7 @@ export const EscapeToOverview = ({ overviewBounds }: EscapeToOverviewProps): nul
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.key !== 'Escape' || event.defaultPrevented) {
+      if (event.key !== 'Escape' || event.defaultPrevented || document.querySelector('dialog[open]')) {
         return;
       }
 

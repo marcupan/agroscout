@@ -10,10 +10,10 @@ export const POINT_TYPE_LABEL: Record<PointType, string> = {
 };
 
 export const POINT_TYPE_COLOR: Record<PointType, string> = {
-  soil_sample: '#b5763a',
-  pest: '#d8483f',
-  disease: '#8e5bd0',
-  other: '#4fa3c4',
+  soil_sample: 'var(--color-type-soil)',
+  pest: 'var(--color-type-pest)',
+  disease: 'var(--color-type-disease)',
+  other: 'var(--color-type-other)',
 };
 
 export const POINT_TYPE_GLYPH: Record<PointType, string> = {

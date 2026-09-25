@@ -16,6 +16,7 @@ export const FitViewToSelection = ({ overviewBounds }: FitViewToSelectionProps):
   const map = useMap();
   const fields = useFieldsStore((state) => state.fields);
   const selectedFieldId = useFieldsStore((state) => state.selectedFieldId);
+
   const previousFieldId = useRef<string | null>(null);
 
   useEffect(() => {

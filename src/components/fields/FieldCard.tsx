@@ -28,8 +28,8 @@ export const FieldCard = ({
     <button
       type="button"
       aria-pressed={selected}
-      onClick={handleSelect}
       className={`relative flex flex-col justify-center gap-0.5 overflow-hidden rounded-md border px-3.5 py-2 text-left transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none ${selected ? 'border-signal-400 bg-signal-400/10' : 'border-shell-600 bg-shell-800 hover:bg-shell-700'} ${className}`}
+      onClick={handleSelect}
     >
       {selected ? <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1 bg-signal-400" /> : null}
 
