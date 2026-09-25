@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --color-shell-900: #141a17;
+  --color-shell-800: #1c2420;
+  --color-shell-700: #27322c;
+  --color-shell-600: #37453d;
+
+  --color-ink-100: #e8ede9;
+  --color-ink-300: #93a29a;
+
+  --color-signal-400: #e3b23c;
+  --color-signal-600: #8a6b1f;
+
+  --color-field: #7fa650;
+
+  --color-type-soil: #b5763a;
+  --color-type-pest: #d8483f;
+  --color-type-disease: #8e5bd0;
+  --color-type-other: #4fa3c4;
+
+  --color-danger: #d8483f;
+
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    accent-color: var(--color-signal-400);
+  }
+
+  body {
+    @apply bg-shell-900 font-sans text-ink-100 antialiased;
+  }
+
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    @apply ring-2 ring-signal-400 ring-offset-2 ring-offset-shell-900 outline-none;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-shell-600) transparent;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility eyebrow {
+  @apply font-mono text-[11px] tracking-[0.18em] text-ink-300 uppercase;
+}
+
+.leaflet-container {
+  @apply bg-shell-800 font-sans;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  @apply bg-shell-900/80 text-ink-300;
+}
+
+.leaflet-container .leaflet-control-attribution a {
+  @apply text-ink-100;
+}
+
+.leaflet-container .leaflet-control-zoom a {
+  @apply border-shell-600 bg-shell-800 text-ink-100;
+}
+
+.leaflet-container .leaflet-control-zoom a:hover,
+.leaflet-container .leaflet-control-zoom a:focus {
+  @apply bg-shell-700 text-ink-100;
+}
+
+.leaflet-container .leaflet-popup-content-wrapper,
+.leaflet-container .leaflet-popup-tip {
+  @apply bg-shell-800 text-ink-100 shadow-xl;
+}
+
+.leaflet-container .leaflet-popup-content-wrapper {
+  @apply rounded-lg border border-shell-600;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  @apply text-ink-300 hover:text-ink-100;
+}
+
+.leaflet-container .leaflet-tooltip {
+  @apply border-shell-600 bg-shell-800 text-ink-100 shadow-lg;
+}
+
+.leaflet-container .leaflet-tooltip-top::before {
+  @apply border-t-shell-800;
+}
+
+.leaflet-container:focus,
+.leaflet-container .leaflet-interactive:focus {
+  outline: none;
+}
+
+.leaflet-container:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-signal-400);
+}
