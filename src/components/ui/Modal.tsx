@@ -4,9 +4,9 @@ import type { ReactElement, ReactNode, SyntheticEvent } from 'react';
 
 export interface ModalProps {
   open: boolean;
-  onClose: () => void;
   title: string;
   children: ReactNode;
+  onClose: () => void;
 }
 
 export interface ModalSectionProps {
@@ -20,6 +20,7 @@ export const Modal = ({ open, onClose, title, children }: ModalProps): ReactElem
 
   const handleCancel = (event: SyntheticEvent<HTMLDialogElement>): void => {
     event.preventDefault();
+
     onClose();
   };
 
@@ -45,8 +46,8 @@ export const Modal = ({ open, onClose, title, children }: ModalProps): ReactElem
     <dialog
       ref={dialogRef}
       aria-labelledby={titleId}
-      onCancel={handleCancel}
       className="m-auto w-[calc(100%-2rem)] max-w-lg rounded-lg border border-shell-600 bg-shell-800 p-0 text-ink-100 shadow-xl transition-[opacity,translate] duration-150 starting:translate-y-2 starting:opacity-0"
+      onCancel={handleCancel}
     >
       <div className="flex max-h-[90vh] w-full flex-col">
         <div className="flex items-center justify-between border-b border-shell-600 px-5 py-4">

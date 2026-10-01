@@ -31,6 +31,7 @@ export const PointFormModal = ({
 
   const handleCreated = (point: MonitoringPoint): void => {
     setLastType(point.type);
+
     onCreated?.(point);
   };
 

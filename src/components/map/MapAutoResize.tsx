@@ -28,10 +28,12 @@ export const MapAutoResize = ({ initialBounds }: MapAutoResizeProps): null => {
       }
 
       map.fitBounds(initialBounds, { padding: OVERVIEW_PADDING, animate: false });
+
       hasFitted = true;
     };
 
     sync();
+
     const observer = new ResizeObserver(sync);
 
     observer.observe(container);

@@ -28,10 +28,12 @@ export const ToastProvider = ({ children }: ToastProviderProps): ReactElement =>
     }
 
     setToasts((current) => current.filter((toast) => toast.id !== id));
+
     const timer = timersRef.current.get(id);
 
     if (timer) {
       clearTimeout(timer);
+
       timersRef.current.delete(id);
     }
   }, []);
@@ -70,7 +72,9 @@ export const ToastProvider = ({ children }: ToastProviderProps): ReactElement =>
       const id = `toast-${nextIdRef.current++}`;
 
       lastRef.current = { message, tone, id };
+
       setToasts((current) => [...current, { id, message, tone }]);
+
       scheduleDismiss(id);
     },
     [scheduleDismiss],

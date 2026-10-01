@@ -83,6 +83,7 @@ export const FieldsLayer = (): ReactElement => {
       }
 
       DomEvent.stopPropagation(event);
+
       selectField(field.properties.id);
     },
     [selectField],

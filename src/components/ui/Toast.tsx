@@ -35,8 +35,8 @@ export const Toast = ({ toast, onDismiss }: ToastProps): ReactElement => {
       <button
         type="button"
         aria-label="Закрити сповіщення"
-        onClick={handleDismiss}
         className="shrink-0 rounded text-ink-300 transition-colors duration-150 hover:text-ink-100 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none"
+        onClick={handleDismiss}
       >
         ✕
       </button>

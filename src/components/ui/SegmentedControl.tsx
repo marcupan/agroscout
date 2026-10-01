@@ -38,8 +38,8 @@ const SegmentedOption = <T extends string>({
         name={name}
         value={option.value}
         checked={selected}
-        onChange={handleChange}
         className="sr-only"
+        onChange={handleChange}
       />
       {option.label}
     </label>

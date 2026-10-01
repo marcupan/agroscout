@@ -15,7 +15,9 @@ export const useTwoStepConfirm = (onConfirm: () => void, timeoutMs = DEFAULT_TIM
 
   const request = useCallback(() => {
     clearTimeout(timer.current);
+
     setConfirming(true);
+
     timer.current = setTimeout(() => {
       setConfirming(false);
     }, timeoutMs);
@@ -23,12 +25,15 @@ export const useTwoStepConfirm = (onConfirm: () => void, timeoutMs = DEFAULT_TIM
 
   const cancel = useCallback(() => {
     clearTimeout(timer.current);
+
     setConfirming(false);
   }, []);
 
   const confirm = useCallback(() => {
     clearTimeout(timer.current);
+
     setConfirming(false);
+
     onConfirm();
   }, [onConfirm]);
 

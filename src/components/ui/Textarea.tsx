@@ -61,8 +61,8 @@ export const Textarea = ({
         maxLength={maxLength}
         defaultValue={defaultValue}
         value={value}
-        onChange={handleChange}
         className={`min-h-24 resize-y rounded-md border border-shell-600 bg-shell-800 px-3 py-2 text-sm text-ink-100 focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+        onChange={handleChange}
         {...props}
       />
       {hint ? (
